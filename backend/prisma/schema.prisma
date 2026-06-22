@@ -44,3 +44,19 @@ model Subject {
 
   attendance     Attendance[]
 }
+
+model Attendance {
+  id         String   @id @default(cuid())
+
+  date       DateTime
+
+  status     String
+
+  studentId  String
+  subjectId  String
+
+  student    Student @relation(fields: [studentId], references: [id])
+  subject    Subject @relation(fields: [subjectId], references: [id])
+
+  createdAt  DateTime @default(now())
+}
