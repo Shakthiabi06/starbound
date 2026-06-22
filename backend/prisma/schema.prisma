@@ -28,3 +28,19 @@ model Student {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+model Subject {
+  id             String   @id @default(cuid())
+  name           String
+  credits        Int
+
+  attendanceGoal Float    @default(80)
+
+  totalClasses   Int      @default(0)
+  attendedClasses Int     @default(0)
+
+  studentId      String
+  student        Student  @relation(fields: [studentId], references: [id])
+
+  attendance     Attendance[]
+}
