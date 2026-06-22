@@ -60,3 +60,25 @@ model Attendance {
 
   createdAt  DateTime @default(now())
 }
+
+model Event {
+  id          String   @id @default(cuid())
+
+  title       String
+
+  type        String
+  // EXAM
+  // QUIZ
+  // ASSIGNMENT
+  // PLACEMENT
+  // INTERVIEW
+
+  startTime   DateTime
+  endTime     DateTime
+
+  priority    Int      @default(3)
+
+  studentId   String
+
+  student     Student @relation(fields: [studentId], references: [id])
+}
