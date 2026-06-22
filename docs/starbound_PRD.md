@@ -61,3 +61,22 @@ Starbound helps students answer:
 3. CGPA Planner
 4. Exam Calendar
 5. Placement Dashboard
+
+# Starbound
+
+## Vision
+AI-powered academic operating system for students.
+
+## Core Features
+- Attendance intelligence
+- CGPA planning
+- Placement readiness
+- Calendar management
+- AI-generated schedules
+
+## V1 Features
+- Student Profile
+- Subject Management
+- Attendance Tracking
+- Calendar Events
+- Daily Schedule Generator
