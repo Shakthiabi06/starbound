@@ -23,62 +23,52 @@ model Student {
 
   subjects    Subject[]
   events      Event[]
-  attendance  Attendance[]
 
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
 model Subject {
-  id             String   @id @default(cuid())
-  name           String
-  credits        Int
+  id               String   @id @default(cuid())
+  name             String
+  credits          Int
 
-  attendanceGoal Float    @default(80)
+  attendanceGoal   Float    @default(80)
 
-  totalClasses   Int      @default(0)
-  attendedClasses Int     @default(0)
+  totalClasses     Int      @default(0)
+  attendedClasses  Int      @default(0)
 
-  studentId      String
-  student        Student  @relation(fields: [studentId], references: [id])
+  studentId        String
+  student          Student  @relation(fields: [studentId], references: [id])
 
-  attendance     Attendance[]
+  attendance       Attendance[]
 }
 
 model Attendance {
   id         String   @id @default(cuid())
 
   date       DateTime
-
   status     String
 
   studentId  String
   subjectId  String
 
-  student    Student @relation(fields: [studentId], references: [id])
   subject    Subject @relation(fields: [subjectId], references: [id])
 
   createdAt  DateTime @default(now())
 }
 
 model Event {
-  id          String   @id @default(cuid())
+  id         String   @id @default(cuid())
 
-  title       String
+  title      String
+  type       String
 
-  type        String
-  // EXAM
-  // QUIZ
-  // ASSIGNMENT
-  // PLACEMENT
-  // INTERVIEW
+  startTime  DateTime
+  endTime    DateTime
 
-  startTime   DateTime
-  endTime     DateTime
+  priority   Int      @default(3)
 
-  priority    Int      @default(3)
-
-  studentId   String
-
-  student     Student @relation(fields: [studentId], references: [id])
+  studentId  String
+  student    Student @relation(fields: [studentId], references: [id])
 }
